@@ -14,7 +14,7 @@ You can pass data to components without first defining them, however it's often 
 use function Twilight\on;
 use function Twilight\props;
 
-on( 'Button:render', function( $context ) {
+on( 'component:Button:render', function( $context ) {
     return props( 'Button', $context, [
         'href' => [
             'type' => 'string'
@@ -72,7 +72,7 @@ In cases where you need to do more complex checks, you may pass in a callback us
 use function Twilight\on;
 use function Twilight\props;
 
-on( 'PostCard:render', function( $context ) {
+on( 'component:PostCard:render', function( $context ) {
     $context = props( 'PostCard', $context, [
         'post' => [
             'validator' => function( $value, $name, $props ) {
