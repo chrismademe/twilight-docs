@@ -1,0 +1,36 @@
+{
+  "header": [
+    {
+      "caption": "Changelog",
+      "url": "/changelog/",
+      "external": false
+    },
+    {
+      "caption": "WordPress Development",
+      "url": "https://resknow.co.uk",
+      "external": true
+    }
+  ],
+  "footer": [
+    {
+      "title": "Getting Started",
+      "items": [
+        {
+          "caption": "Introduction",
+          "url": "/getting-started/introduction/",
+          "external": false
+        },
+        {
+          "caption": "Rendering",
+          "url": "/getting-started/rendering/",
+          "external": false
+        },
+        {
+          "caption": "Creating Components",
+          "url": "/components/creating-components/",
+          "external": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "authorEmail": "chris@underscores.co.uk",
+  "authorName": "Chris Galbraith",
+  "copyright": "Twilight",
+  "name": "Twilight",
+  "slogen": "Twig Preprocessor with an elegant syntax and component API",
+  "social": {
+    "github": "https://github.com/chrismademe/twilight"
+  },
+  "url": "https://twilightphp.com"
+}

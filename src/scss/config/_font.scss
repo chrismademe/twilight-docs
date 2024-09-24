@@ -1,0 +1,18 @@
+@use 'sprucecss/scss/spruce' as *;
+
+@include font-face(
+  'Darker Grotesque',
+  '../../font/darker-grotesque-v8-latin-700.woff2',
+  700
+);
+
+@include font-face(
+  'Instrument Sans',
+  '../../font/instrument-sans-v1-latin-regular.woff2'
+);
+
+@include font-face(
+  'Instrument Sans',
+  '../../font/instrument-sans-v1-latin-700.woff2',
+  700
+);
