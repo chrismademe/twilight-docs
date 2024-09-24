@@ -2,7 +2,7 @@
 title: "Caching Compiled Views"
 eleventyNavigation:
   key: "Caching Compiled Views"
-  parent: "Caching"
+  parent: "Advanced"
   order: 1
 ---
 

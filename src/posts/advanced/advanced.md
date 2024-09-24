@@ -1,6 +1,6 @@
 ---
-title: "Caching"
+title: "Advanced"
 eleventyNavigation:
-    key: Caching
+    key: Advanced
     order: 4
 ---
