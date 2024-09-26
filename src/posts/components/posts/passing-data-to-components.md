@@ -37,7 +37,7 @@ For example, if you want to load a WordPress post based on an ID prop, here's ho
 
 use function Twilight\on;
 
-on( 'Button:render', function( $context ) {
+on( 'component:Button:render', function( $context ) {
     $context['post'] = get_post( $context['id'] );
     return $context;
 } );
