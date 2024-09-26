@@ -21,12 +21,14 @@ composer require chrismademe/twilight
 If you're familiar with building templates in Twig, or even WordPress - you'll know that one of the big things that it doesn't really allow for it components. In Twig, you might do something like this:
 
 ```html
+{% verbatim %}
 {% set content %}
   <h1>WordPress Website Development</h1>
   <p>Expert WordPress Development services in London</p>
 {% endset %}
 
 {% include "partials/hero.twig" with { image: '/images/hero.jpg', content: content } %}
+{% endverbatim %}
 ```
 
 This is fine, but it doesn't "feel" like HTML. And what if you want to manipulate or do something with that incoming data on the component side?
