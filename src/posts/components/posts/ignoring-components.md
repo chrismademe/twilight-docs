@@ -13,9 +13,9 @@ Twilight will ignore `<InnerBlocks />` by default, however you may pass addition
 ```php
 <?php
 
-use function Twilight\compile;
+use function Twilight\Twilight;
 
-compile(
+Twilight::compile(
     input: get_template_directory() . '/views',
     output: WP_CONTENT_DIR . '/.views',
     ignore: [ 'IgnoreThisComponent' ]

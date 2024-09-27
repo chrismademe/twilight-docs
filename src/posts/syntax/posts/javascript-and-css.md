@@ -6,9 +6,6 @@ eleventyNavigation:
   order: 5
 ---
 
-
-## Javascript and CSS
-
 Twilight isn't very opinionated when it comes to Javascript or CSS, however you can write these directly inside your components using the special `Style` and `Script` components. These will be extracted and saved as a `css` and `js` files.
 
 ```html
@@ -28,7 +25,7 @@ Twilight isn't very opinionated when it comes to Javascript or CSS, however you 
 </Script>
 ```
 
-These will be saved in the `assets` directory of your output directory.
+These will be saved in the `assets` directory, which can be set on the Compiler.
 
 ```txt
 assets/

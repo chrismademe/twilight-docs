@@ -6,16 +6,15 @@ eleventyNavigation:
   order: 2
 ---
 
-You can pass data to components without first defining them, however it's often useful to validate props or provide default values. To do this, you can use the `props` function in the `component.php` file of your component.
+You can pass data to components without first defining them, however it's often useful to validate props or provide default values. To do this, you can use the `schema` method when registering a component.
 
 ```php
 <?php
 
-use function Twilight\on;
-use function Twilight\props;
+use Twilight\Component;
 
-on( 'component:Button:render', function( $context ) {
-    return props( 'Button', $context, [
+Component::name('Button')
+    ->schema( [
         'href' => [
             'type' => 'string'
         ],
@@ -28,8 +27,8 @@ on( 'component:Button:render', function( $context ) {
             'type' => 'enum',
             'values' => ['button', 'submit', 'reset']
         ]
-    ] );
-} );
+    ] )
+    ->register();
 
 ```
 
@@ -69,11 +68,10 @@ In cases where you need to do more complex checks, you may pass in a callback us
 ```php
 <?php
 
-use function Twilight\on;
-use function Twilight\props;
+use Twilight\Component;
 
-on( 'component:PostCard:render', function( $context ) {
-    $context = props( 'PostCard', $context, [
+Component::name('PostCard')
+    ->schema( [
         'post' => [
             'validator' => function( $value, $name, $props ) {
                 // Prop must be a Post object of a Post ID
@@ -81,12 +79,12 @@ on( 'component:PostCard:render', function( $context ) {
                     || is_int($value);
             }
         ]
-    ] );
-
-    if ( is_int( $context['post'] ) ) {
-        $context['post'] = get_post( $context['post'] );
-    }
-
-    return $context;
-} );
+    ] )
+    ->data( function( $data ) {
+        if ( is_int( $data['post'] ) ) {
+            $data['post'] = get_post( $data['post'] );
+        }
+        return $data;
+    } )
+    ->register();
 ```

@@ -28,18 +28,20 @@ In the above example, if the `type` variable exists or has a truthy value, the a
 
 ## Modifying or Passing Additional Data to a Component
 
-Twilight will look for a `component.php` in your component directory, if one exists it'll automatically be included. In this file, you can use the `on` function to hook into the component rendering and pass or modify component data.
+Twilight will look for a `component.php` in your component directory, if one exists it'll automatically be included. In this file, you can register your component and modify the data before it gets passed to the template.
 
 For example, if you want to load a WordPress post based on an ID prop, here's how you'd do that.
 
 ```php
 <?php
 
-use function Twilight\on;
+use Twilight\Component;
 
-on( 'component:Button:render', function( $context ) {
-    $context['post'] = get_post( $context['id'] );
-    return $context;
-} );
+Component::name('Button')
+  ->data( function( $data ) {
+      $data['post'] = get_post( $data['id'] );
+      return $data;
+  } )
+  ->register();
 
 ```

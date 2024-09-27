@@ -19,6 +19,16 @@ Wraps an element in an if condition
 </p>
 ```
 
+{% include "partials/arrow.html" %}
+
+```html
+{% verbatim %}{% if someCondition %}
+    <p>
+        I will only show up is someCondition is true
+    </p>
+{% endif %}{% endverbatim %}
+```
+
 ## @unless
 Wraps an element in an if condition, checking for a falsey value
 
@@ -28,13 +38,33 @@ Wraps an element in an if condition, checking for a falsey value
 </p>
 ```
 
+{% include "partials/arrow.html" %}
+
+```html
+{% verbatim %}{% if not someCondition %}
+    <p>
+        I will only show up is someCondition is true
+    </p>
+{% endif %}{% endverbatim %}
+```
+
 ## @for
 
 Wraps an element in a for loop. You may also use `@each`, if you prefer.
 
 ```html
 <ul>
-	<li @for="post in posts">{{ post.title }}</li>
+	<li @for="post in posts">{% verbatim %}{{ post.title }}{% endverbatim %}</li>
+</ul>
+```
+
+{% include "partials/arrow.html" %}
+
+```html
+<ul>
+    {% verbatim %}{% for post in posts %}
+        <li>{{ post.title }}</li>
+    {% endfor %}{% endverbatim %}
 </ul>
 ```
 
@@ -50,6 +80,16 @@ Will add a `checked` attribute to a Checkbox input if the passed value is true.
 />
 ```
 
+{% include "partials/arrow.html" %}
+
+```html
+<input
+    type="checkbox"
+    name="isComplete"
+    {% verbatim %}{{ task.isComplete ? 'checked' : '' }}{% endverbatim %}
+/>
+```
+
 ## @disabled
 
 Will add a `disabled` attribute to an element if the passed value is true.
@@ -59,6 +99,16 @@ Will add a `disabled` attribute to an element if the passed value is true.
     type="checkbox"
     name="isComplete"
     @disabled="task.isComplete"
+/>
+```
+
+{% include "partials/arrow.html" %}
+
+```html
+<input
+    type="checkbox"
+    name="isComplete"
+    {% verbatim %}{{ task.isComplete ? 'disabled' : '' }}{% endverbatim %}
 />
 ```
 
@@ -73,6 +123,15 @@ Will add a `selected` attribute to an element (usually an `<option>`) if the exp
 </select>
 ```
 
+{% include "partials/arrow.html" %}
+
+```html
+<select name="country">
+    <option value="UK" {% verbatim %}{{ user.county == "UK" ? 'selected' : '' }}{% endverbatim %}>United Kingdom</option>
+    <option value="US" {% verbatim %}{{ user.county == "US" ? 'selected' : '' }}{% endverbatim %}>United States</option>
+</select>
+```
+
 ## @text
 
 Inserts the content of a variable inside the element, with HTML escaped.
@@ -81,12 +140,24 @@ Inserts the content of a variable inside the element, with HTML escaped.
 <span @text="post.author" />
 ```
 
+{% include "partials/arrow.html" %}
+
+```html
+{% verbatim %}<span>{{ post.author }}</span>{% endverbatim %}
+```
+
 ## @html
 
 Inserts the content of a variable inside the element, with the `raw` filtered applied
 
 ```html
 <datetime @html="post.date()" />
+```
+
+{% include "partials/arrow.html" %}
+
+```html
+{% verbatim %}<datetime>{{ post.date() | raw }}</datetime>{% endverbatim %}
 ```
 
 ## @attributes

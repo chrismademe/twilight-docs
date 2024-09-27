@@ -42,4 +42,22 @@ Twilight adds a Component syntax to Twig, so you can do this:
 </Hero>
 ```
 
-But that's all, have a read through the docs to learn about <a href="/components/passing-data-to-components/">passing data to components</a>, manipulating that data and the handy <a href="/syntax/directives/">directives</a> that you can use in your templates.
+How about switching an HTML element or attribute based on a condition, well here's what it can look like in Twig:
+
+```html
+{% verbatim %}{% set Tag = href ? 'a' : 'button' %}
+
+<{{ Tag }} {{ href ? 'href="' ~ href ~ '"' : '' }}>
+  Button
+</{{ Tag }}>{% endverbatim %}
+```
+
+It can get pretty narly. In Twilight, you can do this:
+
+```html
+<Element :is="href ? 'a' : 'button'" :href="href">
+  Button
+</Element>
+```
+
+But that's not all, have a read through the docs to learn about <a href="/components/passing-data-to-components/">passing data to components</a>, manipulating that data and the handy <a href="/syntax/directives/">directives</a> that you can use in your templates.

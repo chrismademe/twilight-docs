@@ -7,25 +7,32 @@ eleventyNavigation:
   order: 2
 ---
 
-The first step before rendering views is to tell Twilight where your views are. To do this (in a WordPress context), set the `paths` option on the Twig class in your `functions.php` file.
+The first step before rendering views is to setup the compiler.
 
 ```php
 <?php
 
-use Twilight\Twig\Twig;
+use Twilight\Twilight;
 
-Twig::option( 'paths', [ get_template_directory() . '/views' ] );
+Twilight::compile(
+    input: get_template_directory() . '/views',
+    output: WP_CONTENT_DIR . '/.views',
+    assets: get_template_directory() . '/assets',
+    if: wp_get_environment_type() === 'local'
+);
 
 ```
+
+**Important Note:** You should not place the compiler inside a conditional. This method is responsible for setting up the Twig environment. To conditionally prevent compilation, pass a boolean value to the `if` argument.
 
 Now, assuming your theme is a Classic or Hybrid theme, you can render a view from a template file. The below example uses the homepage template (`front-page.php`), passing the current page object to the template.
 
 ```php
 <?php
 
-use function Twilight\render;
+use function Twilight\Twilight;
 
-echo render(
+Twilight::render(
     template: 'home.twig',
     context: [
         'page' => get_post()

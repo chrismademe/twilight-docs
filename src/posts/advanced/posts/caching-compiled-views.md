@@ -13,11 +13,12 @@ In WordPress, you can use the `wp_get_environment_type` function:
 ```php
 <?php
 
-use function Twilight\compile;
+use Twilight\Twilight;
 
-compile(
+Twilight::compile(
     input: get_template_directory() . '/views',
     output: WP_CONTENT_DIR . '/.views',
+    assets: get_template_directory() . '/assets',
     if: wp_get_environment_type() === 'local'
 );
 ```
@@ -27,11 +28,12 @@ In Laravel, you could use the `env()` helper:
 ```php
 <?php
 
-use function Twilight\compile;
+use Twilight\Twilight;
 
-compile(
+Twilight::compile(
     input: 'resources/views',
     output: 'storage/app/views',
+    assets: 'public/assets',
     if: env('APP_ENV') === 'development'
 );
 ```
