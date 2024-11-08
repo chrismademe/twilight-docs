@@ -18,9 +18,9 @@ This is good, but what if we want to allow an icon to be placed inside the butto
 
 ```html
 <a class="btn" :href="href">
-    {% verbatim %}{{ slots.before | raw }}{% endverbatim %}
+    <Children slot="before" />
     <Children />
-    {% verbatim %}{{ slots.after | raw }}{% endverbatim %}
+    <Children slot="after" />
 </a>
 ```
 
@@ -29,7 +29,7 @@ Here's how this would look if we were to pass an icon before the main content:
 ```html
 <Button href="/contact">
     <Slot name="before">
-        <Icon name="phone">
+        <Icon name="phone" />
     </Slot>
     Contact Us
 </Button>
